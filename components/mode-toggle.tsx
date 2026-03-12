@@ -11,6 +11,7 @@ export default function ModeToggle() {
     const [mounted, setMounted] = useState(false);
 
     // After mounting, we have access to the theme
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     useEffect(() => setMounted(true), []);
 
     if (!mounted) {
