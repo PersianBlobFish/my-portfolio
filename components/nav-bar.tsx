@@ -1,6 +1,6 @@
 "use client"
 import { cn } from "@/lib/utils"
-import { BookOpen, MenuIcon } from 'lucide-react'
+import { Home, MenuIcon } from "lucide-react"
 import Link from "next/link"
 import * as React from "react"
 import { Dialog, DialogClose } from "./ui/dialog"
@@ -21,9 +21,9 @@ export function NavBar() {
                     </SheetTrigger>
                     <SheetContent side="left">
                         <SheetHeader>
-                            <SheetTitle>fabrika.</SheetTitle>
+                            <SheetTitle>Nguyen</SheetTitle>
                             <SheetDescription>
-                                Scale and launch products with expert developers, on-demand, at a flat monthly fee
+                                My personal portfolio showcasing my projects, software, and blog posts. Explore my work and learn more about me.
                             </SheetDescription>
                         </SheetHeader>
                         <div className="flex flex-col space-y-3 mt-[1rem] z-[99]">
@@ -58,8 +58,12 @@ export function NavBar() {
                 </Dialog>
                 <NavigationMenu>
                     <NavigationMenuList className="max-[825px]:hidden ">
-                        <Link href="/" className="pl-2">
-                            <h1 className="font-bold">fabrika.</h1>
+                        <Link
+                            href="/"
+                            className="pl-2 inline-flex items-center"
+                            aria-label="Home"
+                        >
+                            <Home className="h-5 w-5" />
                         </Link>
                     </NavigationMenuList>
                 </NavigationMenu>
@@ -109,3 +113,4 @@ const ListItem = React.forwardRef<
     )
 })
 ListItem.displayName = "ListItem"
+
