@@ -11,18 +11,17 @@ import { Section, Container } from "@/components/ds";
 import { Button } from "@/components/ui/button";
 
 // Asset imports
-import Logo from "@/public/logo.svg";
+import Signature from "@/public/signature.svg";
 
 const Hero = () => {
   return (
     <Section>
       <Container className="flex flex-col items-center text-center">
         <Image
-          src={Logo}
-          width={172}
-          height={72}
-          alt="Company Logo"
-          className="not-prose mb-6 dark:invert md:mb-8"
+          src={Signature}
+          alt="Signature"
+          priority
+          className="not-prose mb-6 h-screen w-screen object-contain dark:invert md:mb-8"
         />
         <h1 className="!mb-0">
           <Balancer>
