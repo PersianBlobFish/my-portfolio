@@ -63,8 +63,10 @@ const Project = () => {
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious />
-          <CarouselNext />
+          <div className="sr-only sm:not-sr-only">
+            <CarouselPrevious />
+            <CarouselNext />
+          </div>
         </Carousel>
       </Container>
     </Section>
