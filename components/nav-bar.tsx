@@ -59,7 +59,7 @@ export function NavBar() {
                 <NavigationMenu>
                     <NavigationMenuList className="max-[825px]:hidden ">
                         <Link
-                            href="/"
+                            href="#"
                             className="pl-2 inline-flex items-center"
                             aria-label="Home"
                         >
