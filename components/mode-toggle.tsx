@@ -7,7 +7,7 @@ import { useTheme } from "next-themes";
 import { Button } from "@/components/ui/button";
 
 export default function ModeToggle() {
-    const { theme, setTheme } = useTheme();
+    const { resolvedTheme, setTheme } = useTheme();
     const [mounted, setMounted] = useState(false);
 
     // After mounting, we have access to the theme
@@ -21,7 +21,7 @@ export default function ModeToggle() {
 
     return (
         <div>
-            {theme === "dark" ? (
+            {resolvedTheme === "dark" ? (
                 <Button variant="ghost" className="hover:bg-inherit border-zinc-900 bg-[#0c0c0d]" size="icon" onClick={() => setTheme("light")}>
                     <Sun className="w-5 h-5" />
                     <span className="sr-only">Toggle theme</span>
