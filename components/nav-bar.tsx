@@ -2,6 +2,7 @@
 import { cn } from "@/lib/utils";
 import { Home, MenuIcon } from "lucide-react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import * as React from "react";
 import { Dialog, DialogClose } from "./ui/dialog";
 import { Button } from "./ui/button";
@@ -20,6 +21,29 @@ import {
 import ModeToggle from "./mode-toggle";
 
 export function NavBar() {
+  const pathname = usePathname();
+
+  const handleHomeClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
+    if (pathname !== "/") {
+      return;
+    }
+
+    event.preventDefault();
+
+    const windowWithLenis = window as Window & {
+      __lenis?: {
+        scrollTo: (target: number, options?: { duration?: number }) => void;
+      };
+    };
+
+    if (windowWithLenis.__lenis) {
+      windowWithLenis.__lenis.scrollTo(0);
+      return;
+    }
+
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
     <div className="flex items-center min-w-full w-full fixed justify-center p-2 z-[50] mt-[2rem]">
       <div className="flex justify-between md:w-[720px] w-[95%] border dark:border-zinc-900 dark:bg-black bg-opacity-10 relative backdrop-filter backdrop-blur-lg bg-white border-white border-opacity-20 rounded-xl p-2 shadow-lg">
@@ -37,7 +61,7 @@ export function NavBar() {
             </SheetHeader>
             <div className="flex flex-col space-y-2 mt-[1rem] z-[99] px-7">
               <DialogClose asChild>
-                <Link href="/">
+                <Link href="/" onClick={handleHomeClick}>
                   <Button variant="ghost" className="w-full justify-start">
                     Home
                   </Button>
@@ -70,7 +94,7 @@ export function NavBar() {
                     Projects
                   </Button>
                 </Link>
-              </DialogClose>    
+              </DialogClose>
               <div className="flex justify-end">
                 <ModeToggle />
               </div>
@@ -80,7 +104,8 @@ export function NavBar() {
         <NavigationMenu>
           <NavigationMenuList className="max-[825px]:hidden ">
             <Link
-              href="#"
+              href="/"
+              onClick={handleHomeClick}
               className="pl-2 inline-flex items-center"
               aria-label="Home"
             >
