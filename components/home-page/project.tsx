@@ -19,6 +19,10 @@ type ProjectProps = {
   projects: PortfolioProject[];
 };
 
+function isSignedSupabaseImage(src: string) {
+  return src.includes("/storage/v1/object/sign/");
+}
+
 const Project = ({ projects }: ProjectProps) => {
   return (
     <Section>
@@ -45,6 +49,7 @@ const Project = ({ projects }: ProjectProps) => {
                         alt={project.title}
                         width={720}
                         height={480}
+                        unoptimized={isSignedSupabaseImage(project.imageUrl)}
                         className="absolute inset-0 h-full w-full object-cover"
                       />
                       <div className="absolute inset-x-0 bottom-0 flex h-full w-full flex-col justify-end bg-gradient-to-t from-black/80 via-black/20 to-transparent p-5 text-white">
