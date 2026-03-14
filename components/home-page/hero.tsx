@@ -28,7 +28,7 @@ const Hero = () => {
         </h3>
         <div className="not-prose mt-6 flex gap-2 md:mt-12" data-reveal>
           <Button asChild>
-            <Link href="/">
+            <Link href="/posts">
               <Camera className="mr-2" />
               Lorem Ipsum
             </Link>
