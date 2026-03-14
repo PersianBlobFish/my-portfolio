@@ -13,7 +13,7 @@ const About = () => {
   return (
     <Section>
       <Container className="grid items-stretch md:grid-cols-2 md:gap-12">
-        <div className="flex flex-col gap-6 py-8">
+        <div className="flex flex-col gap-6 py-8" data-reveal>
           <h3 className="!my-0">Lorem ipsum dolor sit</h3>
           <p className="font-light leading-[1.4] opacity-70">
             Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
@@ -28,7 +28,10 @@ const About = () => {
             </Button>
           </div>
         </div>
-        <div className="not-prose relative flex h-96 overflow-hidden rounded-lg border">
+        <div
+          className="not-prose relative flex h-96 overflow-hidden rounded-lg border"
+          data-reveal
+        >
           <Image
             src={Placeholder}
             alt="placeholder"

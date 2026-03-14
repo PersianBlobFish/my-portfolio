@@ -23,12 +23,14 @@ const Project = ({ projects }: ProjectProps) => {
   return (
     <Section>
       <Container>
-        <h2 className="!mt-0 mb-4">Featured projects</h2>
-        <p>
+        <h2 className="!mt-0 mb-4" data-reveal>
+          Featured projects
+        </h2>
+        <p data-reveal>
           This carousel now loads from Supabase. Add rows to your <code>projects</code>{" "}
           table and they will appear here automatically.
         </p>
-        <Carousel className="mt-6 w-full px-5 py-4">
+        <Carousel className="mt-6 w-full px-5 py-4" data-reveal>
           <CarouselContent className="-ml-1">
             {projects.map((project) => (
               <CarouselItem
