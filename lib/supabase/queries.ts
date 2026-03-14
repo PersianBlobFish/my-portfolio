@@ -20,7 +20,7 @@ const fallbackProjects: PortfolioProject[] = Array.from(
     id: `fallback-${index + 1}`,
     title: `Featured Project ${index + 1}`,
     description:
-      "Connect your Supabase `projects` table to replace this placeholder content with real work.",
+      "Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     imageUrl: fallbackImageUrls[index] ?? "/placeholder.jpg",
     href: null,
   }),

@@ -16,6 +16,10 @@ export function LenisProvider({ children }: LenisProviderProps) {
   const pathname = usePathname();
 
   useEffect(() => {
+    const windowWithLenis = window as Window & {
+      __lenis?: Lenis;
+    };
+
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       return;
     }
@@ -25,6 +29,8 @@ export function LenisProvider({ children }: LenisProviderProps) {
       smoothWheel: true,
       autoRaf: false,
     });
+
+    windowWithLenis.__lenis = lenis;
 
     const updateLenis = (time: number) => {
       lenis.raf(time * 1000);
@@ -64,6 +70,7 @@ export function LenisProvider({ children }: LenisProviderProps) {
       ctx.revert();
       gsap.ticker.remove(updateLenis);
       lenis.destroy();
+      delete windowWithLenis.__lenis;
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
   }, [pathname]);
