@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import { NavBar } from "@/components/nav-bar";
 import { ThemeProvider } from "@/components/theme-provider";
 import { LenisProvider } from "@/components/lenis-provider";
+import Footer from "@/components/footer";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -37,6 +38,7 @@ export default function RootLayout({
           <LenisProvider>
             <NavBar />
             {children}
+            <Footer />
           </LenisProvider>
         </ThemeProvider>
       </body>
