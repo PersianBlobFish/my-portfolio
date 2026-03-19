@@ -68,23 +68,9 @@ export function NavBar() {
                 </Link>
               </DialogClose>
               <DialogClose asChild>
-                <Link href="/software">
+                <Link href="/about">
                   <Button variant="ghost" className="w-full justify-start">
-                    Software
-                  </Button>
-                </Link>
-              </DialogClose>
-              <DialogClose asChild>
-                <Link href="/automation">
-                  <Button variant="ghost" className="w-full justify-start">
-                    Automation
-                  </Button>
-                </Link>
-              </DialogClose>
-              <DialogClose asChild>
-                <Link href="/blog">
-                  <Button variant="ghost" className="w-full justify-start">
-                    Blog
+                    About
                   </Button>
                 </Link>
               </DialogClose>
@@ -114,14 +100,8 @@ export function NavBar() {
           </NavigationMenuList>
         </NavigationMenu>
         <div className="flex items-center gap-2 max-[825px]:hidden">
-          <Link href="/software">
-            <Button variant="ghost">Software</Button>
-          </Link>
-          <Link href="/automation">
-            <Button variant="ghost">Automation</Button>
-          </Link>
-          <Link href="/blog">
-            <Button variant="ghost">Blog</Button>
+          <Link href="/about">
+            <Button variant="ghost">About</Button>
           </Link>
           <Link href="/projects">
             <Button variant="ghost">Projects</Button>

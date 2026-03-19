@@ -14,6 +14,14 @@ const fallbackImageUrls = [
   "https://xssymohznqhhhkbwtomu.supabase.co/storage/v1/object/sign/image/project/project-2.webp?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9lMGFhMmVhMi04YjdkLTQyMDktYTZlYS1iOWE1YzE2OTQyY2UiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJpbWFnZS9wcm9qZWN0L3Byb2plY3QtMi53ZWJwIiwiaWF0IjoxNzczNDAyNDAyLCJleHAiOjE4MDQ5Mzg0MDJ9.y5GuiZq3S6B0RZKMYBOJCnANMEsBnALrz5Xvcr3pZYo",
 ];
 
+const fallbackProjectUrls = [
+  "https://example.com/project-1",
+  "https://example.com/project-2",
+  "https://example.com/project-3",
+  null,
+  null,
+];
+
 const fallbackProjects: PortfolioProject[] = Array.from(
   { length: 5 },
   (_, index) => ({
@@ -22,7 +30,7 @@ const fallbackProjects: PortfolioProject[] = Array.from(
     description:
       "Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     imageUrl: fallbackImageUrls[index] ?? "/placeholder.jpg",
-    href: null,
+    href: fallbackProjectUrls[index] ?? null,
   }),
 );
 
