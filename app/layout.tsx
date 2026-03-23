@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Inter } from "next/font/google";
 import "./globals.css";
+import { LayoutChrome } from "@/components/layout-chrome";
 import { cn } from "@/lib/utils";
-import { NavBar } from "@/components/nav-bar";
 import { ThemeProvider } from "@/components/theme-provider";
 import { LenisProvider } from "@/components/lenis-provider";
-import Footer from "@/components/footer";
+import { TooltipProvider } from "@/components/ui/tooltip";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -34,12 +34,17 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-          <LenisProvider>
-            <NavBar />
-            {children}
-            <Footer />
-          </LenisProvider>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <TooltipProvider>
+            <LenisProvider>
+              <LayoutChrome>{children}</LayoutChrome>
+            </LenisProvider>
+          </TooltipProvider>
         </ThemeProvider>
       </body>
     </html>

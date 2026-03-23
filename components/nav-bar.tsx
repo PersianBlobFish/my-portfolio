@@ -81,6 +81,13 @@ export function NavBar() {
                   </Button>
                 </Link>
               </DialogClose>
+                <DialogClose asChild>
+                  <Link href="/login">
+                    <Button variant="outline" className="justify-start">
+                      Sign in
+                    </Button>
+                  </Link>
+                </DialogClose>
               <div className="flex justify-end">
                 <ModeToggle />
               </div>
@@ -105,6 +112,9 @@ export function NavBar() {
           </Link>
           <Link href="/projects">
             <Button variant="ghost">Projects</Button>
+          </Link>
+          <Link href="/login">
+            <Button variant="outline">Sign in</Button>
           </Link>
           <ModeToggle />
         </div>
