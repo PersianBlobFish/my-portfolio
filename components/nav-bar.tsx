@@ -106,6 +106,9 @@ export function NavBar() {
           <Link href="/projects">
             <Button variant="ghost">Projects</Button>
           </Link>
+          <Link href="/login">
+            <Button variant="outline">Sign in</Button>
+          </Link>
           <ModeToggle />
         </div>
       </div>
