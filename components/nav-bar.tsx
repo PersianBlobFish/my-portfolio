@@ -22,17 +22,51 @@ import ModeToggle from "./mode-toggle";
 
 export function NavBar() {
   const pathname = usePathname();
+  const isHomePage = pathname === "/";
+
+  const navItems = [
+    { label: "About", href: "/#about" },
+    { label: "Skills", href: "/#skills" },
+    { label: "Projects", href: "/#projects" },
+  ];
+
+  const scrollToTarget = (target: string) => {
+    const windowWithLenis = window as Window & {
+      __lenis?: {
+        scrollTo: (target: string | number, options?: { duration?: number }) => void;
+      };
+    };
+
+    const element = document.querySelector(target);
+
+    if (element instanceof HTMLElement) {
+      const nav = document.getElementById("site-nav");
+      const navBottom = nav?.getBoundingClientRect().bottom ?? 0;
+      const extraOffset = Number(element.dataset.navOffset ?? 0);
+      const top =
+        window.scrollY + element.getBoundingClientRect().top - navBottom - extraOffset;
+
+      if (windowWithLenis.__lenis) {
+        windowWithLenis.__lenis.scrollTo(Math.max(top, 0));
+        return;
+      }
+
+      window.scrollTo({ top: Math.max(top, 0), behavior: "smooth" });
+      return;
+    }
+
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   const handleHomeClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
-    if (pathname !== "/") {
+    if (!isHomePage) {
       return;
     }
 
     event.preventDefault();
-
     const windowWithLenis = window as Window & {
       __lenis?: {
-        scrollTo: (target: number, options?: { duration?: number }) => void;
+        scrollTo: (target: string | number, options?: { duration?: number }) => void;
       };
     };
 
@@ -44,15 +78,51 @@ export function NavBar() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  const handleSectionClick =
+    (hash: string) => (event: React.MouseEvent<HTMLAnchorElement>) => {
+      if (!isHomePage) {
+        return;
+      }
+
+      event.preventDefault();
+      scrollToTarget(hash);
+    };
+
+  const renderNavButton = ({
+    label,
+    href,
+    mobile = false,
+  }: {
+    label: string;
+    href: string;
+    mobile?: boolean;
+  }) => {
+    const hash = href.replace("/#", "#");
+    const button = (
+      <Button variant="ghost" className={mobile ? "w-full justify-start" : undefined}>
+        {label}
+      </Button>
+    );
+
+    return (
+      <Link href={href} onClick={handleSectionClick(hash)}>
+        {button}
+      </Link>
+    );
+  };
+
   return (
-    <div className="flex items-center min-w-full w-full fixed justify-center p-2 z-[50] mt-[2rem]">
+    <div
+      id="site-nav"
+      className="flex items-center min-w-full w-full fixed justify-center p-2 z-[50] mt-[2rem]"
+    >
       <div className="flex justify-between md:w-[720px] w-[95%] border dark:border-zinc-900 dark:bg-black bg-opacity-10 relative backdrop-filter backdrop-blur-lg bg-white border-white border-opacity-20 rounded-xl p-2 shadow-lg">
         <Dialog>
           <SheetTrigger className="min-[825px]:hidden p-2 transition">
             <MenuIcon />
           </SheetTrigger>
           <SheetContent side="left">
-            <SheetHeader>
+            <SheetHeader className="p-8">
               <SheetTitle>Nguyen</SheetTitle>
               <SheetDescription>
                 My personal portfolio showcasing my projects, software, and blog
@@ -67,23 +137,14 @@ export function NavBar() {
                   </Button>
                 </Link>
               </DialogClose>
-              <DialogClose asChild>
-                <Link href="/about">
-                  <Button variant="ghost" className="w-full justify-start">
-                    About
-                  </Button>
-                </Link>
-              </DialogClose>
-              <DialogClose asChild>
-                <Link href="/projects">
-                  <Button variant="ghost" className="w-full justify-start">
-                    Projects
-                  </Button>
-                </Link>
-              </DialogClose>
+              {navItems.map((item) => (
+                <DialogClose asChild key={item.label}>
+                  {renderNavButton({ ...item, mobile: true })}
+                </DialogClose>
+              ))}
                 <DialogClose asChild>
                   <Link href="/login">
-                    <Button variant="outline" className="justify-start">
+                    <Button variant="outline" className="hidden justify-start">
                       Sign in
                     </Button>
                   </Link>
@@ -107,14 +168,13 @@ export function NavBar() {
           </NavigationMenuList>
         </NavigationMenu>
         <div className="flex items-center gap-2 max-[825px]:hidden">
-          <Link href="/about">
-            <Button variant="ghost">About</Button>
-          </Link>
-          <Link href="/projects">
-            <Button variant="ghost">Projects</Button>
-          </Link>
+          {navItems.map((item) => (
+            <React.Fragment key={item.label}>
+              {renderNavButton(item)}
+            </React.Fragment>
+          ))}
           <Link href="/login">
-            <Button variant="outline">Sign in</Button>
+            <Button variant="outline" className="hidden">Sign in</Button>
           </Link>
           <ModeToggle />
         </div>

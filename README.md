@@ -7,6 +7,12 @@ Add these variables to `.env.local`:
 ```bash
 NEXT_PUBLIC_SUPABASE_URL=your-project-url
 NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=your-anon-or-publishable-key
+PROJECT_CARD_1_TITLE=Your first project title
+PROJECT_CARD_1_DESCRIPTION=Your first project description
+PROJECT_CARD_2_TITLE=Your second project title
+PROJECT_CARD_2_DESCRIPTION=Your second project description
+PROJECT_CARD_3_TITLE=Your third project title
+PROJECT_CARD_3_DESCRIPTION=Your third project description
 ```
 
 Create a `projects` table with these columns:
@@ -22,7 +28,9 @@ create table public.projects (
 );
 ```
 
-The homepage queries this table in `app/page.tsx` through `lib/supabase/queries.ts`. If the table is empty or unavailable, the UI falls back to placeholder cards.
+The homepage queries this table in `app/page.tsx` through `lib/supabase/queries.ts`.
+
+Project card text can be managed independently from Supabase through the `PROJECT_CARD_*` environment variables. Supabase still provides the image and project link. If an env value is left empty, the app falls back to the Supabase `title` and `description` fields. If the table is empty or unavailable, the UI falls back to placeholder cards.
 
 ## Getting started
 

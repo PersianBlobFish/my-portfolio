@@ -12,21 +12,20 @@ import SignatureDraw from "@/components/home-page/signature-draw";
 
 const Hero = () => {
   return (
-    <Section>
+    <Section id="home">
       <Container className="flex flex-col items-center text-center">
         <SignatureDraw />
-        <h1 className="!mb-0" data-reveal>
+        <h1 className="!mb-0 italic" data-reveal>
           <Balancer>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Simple solutions. Thoughtfully built.
           </Balancer>
         </h1>
         <h3 className="text-muted-foreground" data-reveal>
           <Balancer>
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-            nisi ut aliquip ex ea commodo consequat.
+            Front-end developer, UI/UX designer, software engineer, and lifelong learner.
           </Balancer>
         </h3>
-        <div className="not-prose mt-6 flex gap-2 md:mt-12" data-reveal>
+        <div className="hidden not-prose mt-6 flex gap-2 md:mt-12" data-reveal>
           <Button asChild>
             <Link href="/posts">
               <Camera className="mr-2" />

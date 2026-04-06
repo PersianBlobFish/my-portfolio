@@ -130,6 +130,9 @@
   html {
     @apply font-sans;
   }
+  section[id] {
+    scroll-margin-top: 7rem;
+  }
   .lenis.lenis-smooth {
     scroll-behavior: auto !important;
   }
