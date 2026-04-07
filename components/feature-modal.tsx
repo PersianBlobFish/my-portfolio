@@ -34,6 +34,7 @@ export type FeatureModalConfig = {
   closeLabel?: string;
   showCloseButton?: boolean;
   contentClassName?: string;
+  bodyClassName?: string;
 };
 
 type FeatureModalProps = {
@@ -89,7 +90,12 @@ export function FeatureModal({
           ) : null}
         </DialogHeader>
         {config.content || children ? (
-          <div className="space-y-4 text-sm leading-6 text-muted-foreground">
+          <div
+            className={cn(
+              "space-y-4 text-sm leading-6 text-muted-foreground",
+              config.bodyClassName,
+            )}
+          >
             {config.content}
             {children}
           </div>

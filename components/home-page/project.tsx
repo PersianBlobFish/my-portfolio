@@ -63,6 +63,16 @@ function getProjectModalConfig(
   index: number,
 ): FeatureModalConfig {
   const modalCopy = getProjectModalCopy(project, index);
+  const modalActions =
+    index === 2
+      ? [
+          {
+            label: "View on Chrome Web Store",
+            href: project.href ?? "https://chromewebstore.google.com/detail/wow-extension/okdaiedanminfdpekdmoegkenfegpbam",
+            target: "_blank" as const,
+          },
+        ]
+      : undefined;
 
   return {
     title: modalCopy.title,
@@ -92,7 +102,9 @@ function getProjectModalConfig(
       </div>
     ),
     contentClassName:
-      "inset-0 top-0 left-0 h-dvh max-h-dvh max-w-none translate-x-0 translate-y-0 overflow-y-auto rounded-none p-5 sm:inset-auto sm:top-1/2 sm:left-1/2 sm:h-auto sm:max-h-[calc(100vh-2rem)] sm:max-w-3xl sm:-translate-x-1/2 sm:-translate-y-1/2 sm:rounded-xl sm:p-6",
+      "inset-0 top-0 left-0 grid h-dvh max-h-dvh max-w-none grid-rows-[auto_minmax(0,1fr)_auto] translate-x-0 translate-y-0 overflow-hidden rounded-none p-5 sm:inset-auto sm:top-1/2 sm:left-1/2 sm:h-auto sm:max-h-[calc(100vh-2rem)] sm:max-w-3xl sm:-translate-x-1/2 sm:-translate-y-1/2 sm:rounded-xl sm:p-6",
+    bodyClassName: "min-h-0 overflow-y-auto pr-1",
+    actions: modalActions,
   };
 }
 
