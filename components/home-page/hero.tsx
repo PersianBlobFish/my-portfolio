@@ -12,8 +12,11 @@ import SignatureDraw from "@/components/home-page/signature-draw";
 
 const Hero = () => {
   return (
-    <Section id="home">
-      <Container className="flex flex-col items-center text-center">
+    <Section
+      id="home"
+      className="flex min-h-dvh items-center py-0 sm:py-0"
+    >
+      <Container className="flex flex-col items-center justify-center text-center">
         <SignatureDraw />
         <h1 className="!mb-0 italic" data-reveal>
           <Balancer>

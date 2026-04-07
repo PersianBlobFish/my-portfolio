@@ -20,8 +20,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Nguyen Pham Tran - Portfolio",
-  description: "Created by Nguyen Pham Tran",
+  title: "Nguyen Pham Tran",
+  description: "Personal Collections",
 };
 
 export default function RootLayout({

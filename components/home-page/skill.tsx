@@ -76,7 +76,7 @@ const Speciality = ({
                   className="flex items-center justify-between border-b py-4" data-reveal
                 >
                   <div>
-                    <a href={job.url} className="font-semibold hover:underline">
+                    <a className="font-semibold">
                       {job.title}
                     </a>
                     <p className="text-sm text-muted-foreground">
