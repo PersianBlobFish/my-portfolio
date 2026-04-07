@@ -141,7 +141,7 @@ const Project = ({ projects }: ProjectProps) => {
           My experiences and projects.
         </p>
         <Carousel
-          className="mt-6 w-full px-2 py-4 sm:px-5"
+          className="-mx-4 mt-6 w-[calc(100%+2rem)] py-4 sm:mx-0 sm:w-full sm:px-5"
           setApi={setApi}
           data-reveal
         >
@@ -151,10 +151,10 @@ const Project = ({ projects }: ProjectProps) => {
                 key={project.id}
                 className="basis-[86%] pl-2 md:basis-1/2 md:pl-1 lg:basis-1/2"
               >
-                <div className="py-1 pr-2 md:p-1">
+                <div className="py-1 md:p-1">
                   <Card
                     className={cn(
-                      "relative mx-1 overflow-hidden transition-opacity duration-300 md:mx-2 md:opacity-100",
+                      "relative overflow-hidden transition-opacity duration-300 md:mx-2 md:opacity-100",
                       index === selectedIndex ? "opacity-100" : "opacity-25",
                     )}
                   >
