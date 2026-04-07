@@ -30,7 +30,7 @@ const About = () => {
           </div>
         </div>
         <div
-          className="invisible md:visible not-prose relative flex h-96 overflow-hidden rounded-lg border"
+          className="hidden md:flex not-prose relative h-96 overflow-hidden rounded-lg border"
           data-reveal
         >
           <Image
