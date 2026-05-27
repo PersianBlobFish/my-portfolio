@@ -61,7 +61,7 @@ const Speciality = ({
   className,
 }: Careers4Props) => {
   return (
-    <section className={cn("py-32", className)} >
+    <section id="skills" className={cn("py-32", className)} >
       <div className="container mx-auto p-4 sm:p-6" data-reveal>
         <h2 className="text-3xl font-medium md:text-4xl">{heading}</h2>
         <div className="mt-6 flex flex-col gap-16 md:mt-14" data-reveal>
