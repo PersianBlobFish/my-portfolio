@@ -208,3 +208,34 @@ export const Prose = ({
     </Component>
   );
 };
+
+type EditorialSectionProps = {
+  number: string;
+  label: React.ReactNode;
+  id?: string;
+  className?: string;
+  children?: React.ReactNode;
+};
+
+export const EditorialSection = ({
+  number,
+  label,
+  id,
+  className,
+  children,
+}: EditorialSectionProps) => (
+  <section
+    id={id}
+    className={cn("border-t border-border py-10 md:py-16", className)}
+  >
+    <div className="grid gap-8 md:grid-cols-[1fr_2fr] md:gap-12">
+      <div className="flex flex-col gap-6">
+        <p className="text-xs text-muted-foreground">{number}</p>
+        <div className="text-xs uppercase leading-relaxed tracking-widest text-muted-foreground">
+          {label}
+        </div>
+      </div>
+      <div className="min-w-0">{children}</div>
+    </div>
+  </section>
+);
