@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 
 interface JobOpening {
   title: string;
-  location: string;
+  location?: string;
   url: string;
 }
 
@@ -23,38 +23,24 @@ const Speciality = ({
   heading = "Skills & Speciality",
   jobs = [
     {
-      category: "Software",
+      category: "AI Engineering",
       openings: [
-        {
-          title: "Frontend Developer",
-          location: "React, TypeScript",
-          url: "#",
-        },
-        {
-          title: "UI/UX Designer",
-          location: "Figma",
-          url: "#",
-        },
-        {
-          title: "Software Engineer",
-          location: "C++, Python, Java",
-          url: "#",
-        },
+        { title: "LLM Application Development", url: "#" },
+        { title: "AI Workflow Automation", url: "#" },
+        { title: "AI Agent Development", url: "#" },
+        { title: "Prompt Engineering", url: "#" },
+        { title: "Retrieval-Augmented Generation (RAG)", url: "#" },
+        { title: "Model Evaluation & Prompt Optimization", url: "#" },
       ],
     },
     {
-      category: "Skills",
+      category: "System Design & Backend",
       openings: [
-        {
-          title: "Data Analysis",
-          location: "SQL (SQLite, MySQL), Python (Pandas, NumPy)",
-          url: "#",
-        },
-        {
-          title: "Object-Oriented Design",
-          location: "Python, Java, C++",
-          url: "#",
-        },
+        { title: "Scalable System Design", url: "#" },
+        { title: "REST API Development", url: "#" },
+        { title: "Database Design (SQL)", url: "#" },
+        { title: "Asynchronous Programming", url: "#" },
+        { title: "Authentication & Integrations", url: "#" },
       ],
     },
   ],
@@ -67,7 +53,7 @@ const Speciality = ({
         <div className="mt-6 flex flex-col gap-16 md:mt-14" data-reveal>
           {jobs.map((jobCategory) => (
             <div key={jobCategory.category} className="grid" data-reveal>
-              <h2 className="border-b pb-4 text-xl font-bold">
+              <h2 className="border-b pb-4 text-xl font-semibold md:text-2xl" data-reveal>
                 {jobCategory.category}
               </h2>
               {jobCategory.openings.map((job) => (
@@ -76,12 +62,14 @@ const Speciality = ({
                   className="flex items-center justify-between border-b py-4" data-reveal
                 >
                   <div>
-                    <a className="font-semibold">
+                    <a className="font-small text-primary transition-colors hover:text-primary/80" href={job.url}>
                       {job.title}
                     </a>
-                    <p className="text-sm text-muted-foreground">
-                      {job.location}
-                    </p>
+                    {job.location ? (
+                      <p className="text-sm text-muted-foreground">
+                        {job.location}
+                      </p>
+                    ) : null}
                   </div>
                 </div>
               ))}
