@@ -25,7 +25,7 @@ const Hero = () => {
         </h1>
         <h3 className="text-muted-foreground" data-reveal>
           <Balancer>
-            Front-end developer, UI/UX designer, software engineer, and lifelong learner.
+            Building AI-powered applications, scalable systems, and intelligent workflows.
           </Balancer>
         </h3>
         <div className="hidden not-prose mt-6 flex gap-2 md:mt-12" data-reveal>
