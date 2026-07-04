@@ -1,9 +1,9 @@
 import { createServerClient } from "@supabase/ssr";
 import { type NextRequest, NextResponse } from "next/server";
 
-import { hasSupabaseEnv } from "@/lib/supabase/env";
+import { getSupabaseEnv, hasSupabaseEnv } from "@/lib/supabase/env";
 
-export function updateSession(request: NextRequest) {
+export async function updateSession(request: NextRequest) {
   if (!hasSupabaseEnv()) {
     return NextResponse.next({
       request,
@@ -14,10 +14,9 @@ export function updateSession(request: NextRequest) {
     request,
   });
 
-  const supabase = createServerClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY!,
-    {
+  const { supabaseUrl, supabasePublishableKey } = getSupabaseEnv();
+
+  const supabase = createServerClient(supabaseUrl, supabasePublishableKey, {
       cookies: {
         getAll() {
           return request.cookies.getAll();
@@ -39,7 +38,9 @@ export function updateSession(request: NextRequest) {
     },
   );
 
-  void supabase.auth.getUser();
+  // Await the refresh so any renewed auth cookies are written to the
+  // response before it is returned; otherwise sessions silently expire.
+  await supabase.auth.getUser();
 
   return response;
 }

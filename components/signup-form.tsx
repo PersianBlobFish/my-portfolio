@@ -127,6 +127,7 @@ export function SignupForm({ ...props }: React.ComponentProps<typeof Card>) {
                 value={password}
                 onChange={(event) => setPassword(event.target.value)}
                 disabled={isPending}
+                minLength={8}
                 required
               />
               <FieldDescription>

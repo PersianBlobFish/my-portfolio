@@ -45,7 +45,6 @@ type DSProps = {
   children?: React.ReactNode;
   id?: string;
   style?: React.CSSProperties;
-  dangerouslySetInnerHTML?: { __html: string };
   containerClassName?: string;
   isArticle?: boolean;
   isSpaced?: boolean;
@@ -105,7 +104,6 @@ export const Prose = ({
   children,
   className,
   id,
-  dangerouslySetInnerHTML,
   style,
   isArticle = false,
   isSpaced = false,
@@ -204,7 +202,6 @@ export const Prose = ({
         className
       )}
       id={id}
-      dangerouslySetInnerHTML={dangerouslySetInnerHTML}
       style={style}
     >
       {children}

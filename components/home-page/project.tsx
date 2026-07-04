@@ -27,30 +27,58 @@ function isSignedSupabaseImage(src: string) {
   return src.includes("/storage/v1/object/sign/");
 }
 
-const projectModalCopy = [
+type ProjectModalCopy = {
+  title: string;
+  description: string;
+  body: string;
+  chromeStoreHref?: string;
+};
+
+// Matched against the resolved project title (not array position) so the
+// copy follows its project even if rows are reordered in the database.
+const projectModalCopyByKeyword: Array<{
+  keywords: string[];
+  copy: ProjectModalCopy;
+}> = [
   {
-    title: "VEX Robotics",
-    description: "VEX Robotics Competition (VRC)",
-    body:
-      "Led a competitive VEX Robotics team in the design, construction, and programming of an autonomous and driver-controlled robot for the VEX Robotics Competition. The project required close coordination between mechanical design, electronics, and software under strict competition constraints.",
+    keywords: ["vex"],
+    copy: {
+      title: "VEX Robotics",
+      description: "VEX Robotics Competition (VRC)",
+      body:
+        "Led a competitive VEX Robotics team in the design, construction, and programming of an autonomous and driver-controlled robot for the VEX Robotics Competition. The project required close coordination between mechanical design, electronics, and software under strict competition constraints.",
+    },
   },
   {
-    title: "OpenBCI",
-    description: "Brain–Computer Interface Data Analysis Project",
-    body:
-      "Developed a data acquisition and analysis pipeline using OpenBCI, an open-source brain–computer interface platform, to measure and record electrical brain activity (EEG). The project focused on transforming raw biosignals into usable data for real-world exploratory applications.",
+    keywords: ["openbci", "bci", "eeg"],
+    copy: {
+      title: "OpenBCI",
+      description: "Brain–Computer Interface Data Analysis Project",
+      body:
+        "Developed a data acquisition and analysis pipeline using OpenBCI, an open-source brain–computer interface platform, to measure and record electrical brain activity (EEG). The project focused on transforming raw biosignals into usable data for real-world exploratory applications.",
+    },
   },
   {
-    title: "Wow extension",
-    description: "Private Chrome Extension for Internal Form Automation",
-    body:
-      "Collaborated with a small team to develop a private Google Chrome extension used internally within our school to automate repetitive Google Form workflows. The tool was designed as a side project to improve student productivity and provide a practical efficiency advantage in managing routine academic tasks.",
+    keywords: ["wow", "extension"],
+    copy: {
+      title: "Wow extension",
+      description: "Private Chrome Extension for Internal Form Automation",
+      body:
+        "Collaborated with a small team to develop a private Google Chrome extension used internally within our school to automate repetitive Google Form workflows. The tool was designed as a side project to improve student productivity and provide a practical efficiency advantage in managing routine academic tasks.",
+      chromeStoreHref:
+        "https://chromewebstore.google.com/detail/wow-extension/okdaiedanminfdpekdmoegkenfegpbam",
+    },
   },
 ];
 
-function getProjectModalCopy(project: PortfolioProject, index: number) {
+function getProjectModalCopy(project: PortfolioProject): ProjectModalCopy {
+  const title = project.title.toLowerCase();
+  const match = projectModalCopyByKeyword.find(({ keywords }) =>
+    keywords.some((keyword) => title.includes(keyword)),
+  );
+
   return (
-    projectModalCopy[index] ?? {
+    match?.copy ?? {
       title: project.title,
       description: "A closer look at this project.",
       body: project.description,
@@ -58,21 +86,17 @@ function getProjectModalCopy(project: PortfolioProject, index: number) {
   );
 }
 
-function getProjectModalConfig(
-  project: PortfolioProject,
-  index: number,
-): FeatureModalConfig {
-  const modalCopy = getProjectModalCopy(project, index);
-  const modalActions =
-    index === 2
-      ? [
-          {
-            label: "View on Chrome Web Store",
-            href: project.href ?? "https://chromewebstore.google.com/detail/wow-extension/okdaiedanminfdpekdmoegkenfegpbam",
-            target: "_blank" as const,
-          },
-        ]
-      : undefined;
+function getProjectModalConfig(project: PortfolioProject): FeatureModalConfig {
+  const modalCopy = getProjectModalCopy(project);
+  const modalActions = modalCopy.chromeStoreHref
+    ? [
+        {
+          label: "View on Chrome Web Store",
+          href: project.href ?? modalCopy.chromeStoreHref,
+          target: "_blank" as const,
+        },
+      ]
+    : undefined;
 
   return {
     title: modalCopy.title,
@@ -173,7 +197,7 @@ const Project = ({ projects }: ProjectProps) => {
                           {project.description}
                         </p>
                         <FeatureModal
-                          config={getProjectModalConfig(project, index)}
+                          config={getProjectModalConfig(project)}
                           trigger={<Button className="mt-4 w-fit">View project</Button>}
                         />
                       </div>
