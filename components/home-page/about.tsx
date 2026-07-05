@@ -1,46 +1,77 @@
-// React and Next.js imports
-import Link from "next/link";
-import Image from "next/image";
+import { EditorialSection } from "@/components/ds";
 
-// UI component imports
-import { Section, Container } from "@/components/ds";
-import { Button } from "@/components/ui/button";
-
-// Asset imports
-import Placeholder from "@/public/placeholder.jpg";
+const skillCategories = [
+  {
+    category: "AI Engineering",
+    items: [
+      "LLM Application Development",
+      "AI Workflow Automation",
+      "AI Agent Development",
+      "Prompt Engineering",
+      "Retrieval-Augmented Generation (RAG)",
+      "Model Evaluation & Prompt Optimization",
+    ],
+  },
+  {
+    category: "System Design & Backend",
+    items: [
+      "Scalable System Design",
+      "REST API Development",
+      "Database Design (SQL)",
+      "Asynchronous Programming",
+      "Authentication & Integrations",
+    ],
+  },
+];
 
 const About = () => {
   return (
     <>
       <div id="about" data-nav-offset="24" />
-      <Section>
-        <Container className="grid items-stretch md:grid-cols-2 md:gap-12">
-        <div className="flex flex-col gap-6 py-8" data-reveal>
-          <h3 className="!my-0 text-3xl font-medium md:text-4xl">About Me</h3>
-          <p className="font-light leading-[1.4] opacity-70">
-            I’m a Computer Science student focused on solving real-world problems through technology. I build practical, well-designed solutions with strong attention to detail. Always learning, I aim to grow as a developer and create meaningful impact.
+      <EditorialSection
+        number="3"
+        label={
+          <>
+            About
+            <br />
+            Skills
+          </>
+        }
+      >
+        <div className="flex flex-col gap-10">
+          <h2
+            className="!my-0 text-2xl font-medium leading-snug tracking-tight text-balance md:text-4xl"
+            data-reveal
+          >
+            I&apos;m a Computer Science student focused on solving real-world
+            problems through technology. I build practical, well-designed
+            solutions with strong attention to detail.
+          </h2>
+          <p
+            className="font-light leading-relaxed text-muted-foreground"
+            data-reveal
+          >
+            Always learning, I aim to grow as a developer and create
+            meaningful impact — with knowledge in the categories below.
           </p>
-          <div className="not-prose flex items-center gap-2">
-            <Button className="hidden w-fit" asChild>
-              <Link href="#">Get Started</Link>
-            </Button>
-            <Button className="w-fit" variant="link" asChild>
-              <Link href="#">Learn More {"->"}</Link>
-            </Button>
+          <div id="skills" className="not-prose flex flex-col gap-10">
+            {skillCategories.map((group) => (
+              <div key={group.category} data-reveal>
+                <h3 className="border-b border-border pb-3 text-xl font-semibold md:text-2xl">
+                  {group.category}
+                </h3>
+                <ul className="mt-4 grid gap-x-8 gap-y-2 sm:grid-cols-2">
+                  {group.items.map((item) => (
+                    <li key={item} className="text-sm leading-relaxed">
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </div>
         </div>
-        <div
-          className="hidden md:flex not-prose relative h-96 overflow-hidden rounded-lg border"
-          data-reveal
-        >
-          <Image
-            src={Placeholder}
-            alt="placeholder"
-            className="fill object-cover"
-          />
-        </div>
-        </Container>
-      </Section>
+      </EditorialSection>
     </>
   );
 };
