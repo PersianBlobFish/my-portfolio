@@ -127,7 +127,7 @@ function getProjectModalConfig(project: PortfolioProject): FeatureModalConfig {
 
 const Project = ({ projects }: ProjectProps) => {
   return (
-    <EditorialSection number="2" label="Selected work" id="projects">
+    <EditorialSection number="2" label="" id="projects">
       <div className="not-prose flex flex-col" data-reveal>
         {projects.map((project, index) => {
           const copy = getProjectModalCopy(project);

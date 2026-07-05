@@ -1,28 +1,33 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-
+import { Typewriter } from "nextjs-simple-typewriter";
 import { EditorialSection } from "@/components/ds";
 import SignatureDraw from "@/components/home-page/signature-draw";
 
 const Hero = () => {
   return (
     <div id="home">
-      <div className="pt-6 md:pt-10" data-reveal>
+      <div className="pt-[37vh] md:pt-[34vh]" data-reveal>
         <SignatureDraw className="mb-8 h-[26vh] md:mb-12 md:h-[32vh]" />
       </div>
       <EditorialSection
         number="1"
         label={
           <>
-            Nguyen Pham Tran
-            <br />
-            Computer Science Student
           </>
         }
       >
         <div className="flex flex-col gap-6" data-reveal>
           <h1 className="text-3xl font-medium tracking-tight text-balance md:text-5xl">
-            Simple solutions. Thoughtfully built.
+            <Typewriter
+              words={["Simple solutions. Thoughtfully built.", "Simple tools. Thoughtfully engineered.", "Simple software. Thoughtfully designed.", "Simple systems. Thoughtfully engineered.", "Simple ideas. Thoughtfully shaped."]}
+              loop={0}
+              cursor={true}
+              cursorStyle="|"
+              typeSpeed={80}
+              deleteSpeed={50}
+              delaySpeed={10000}
+            />
           </h1>
           <p className="text-lg font-light leading-snug text-muted-foreground md:text-xl">
             Building AI-powered applications, scalable systems, and

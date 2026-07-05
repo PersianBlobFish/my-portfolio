@@ -32,9 +32,6 @@ const About = () => {
         number="3"
         label={
           <>
-            About
-            <br />
-            Skills
           </>
         }
       >
