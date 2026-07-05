@@ -1,46 +1,43 @@
-// React and Next.js imports
 import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 
-// Third-party library imports
-import Balancer from "react-wrap-balancer";
-import { Camera } from "lucide-react";
-
-// Local component imports
-import { Section, Container } from "@/components/ds";
-import { Button } from "@/components/ui/button";
+import { EditorialSection } from "@/components/ds";
 import SignatureDraw from "@/components/home-page/signature-draw";
 
 const Hero = () => {
   return (
-    <Section
-      id="home"
-      className="flex min-h-dvh items-center py-0 sm:py-0"
-    >
-      <Container className="flex flex-col items-center justify-center text-center">
-        <SignatureDraw />
-        <h1 className="!mb-0 italic" data-reveal>
-          <Balancer>
+    <div id="home">
+      <div className="pt-6 md:pt-10" data-reveal>
+        <SignatureDraw className="mb-8 h-[26vh] md:mb-12 md:h-[32vh]" />
+      </div>
+      <EditorialSection
+        number="1"
+        label={
+          <>
+            Nguyen Pham Tran
+            <br />
+            Computer Science Student
+          </>
+        }
+      >
+        <div className="flex flex-col gap-6" data-reveal>
+          <h1 className="text-3xl font-medium tracking-tight text-balance md:text-5xl">
             Simple solutions. Thoughtfully built.
-          </Balancer>
-        </h1>
-        <h3 className="text-muted-foreground" data-reveal>
-          <Balancer>
-            Building AI-powered applications, scalable systems, and intelligent workflows.
-          </Balancer>
-        </h3>
-        <div className="hidden not-prose mt-6 flex gap-2 md:mt-12" data-reveal>
-          <Button asChild>
-            <Link href="/posts">
-              <Camera className="mr-2" />
-              Lorem Ipsum
-            </Link>
-          </Button>
-          <Button variant={"ghost"} asChild>
-            <Link href="/posts">Dolor Sit Amet -{">"}</Link>
-          </Button>
+          </h1>
+          <p className="text-lg font-light leading-snug text-muted-foreground md:text-xl">
+            Building AI-powered applications, scalable systems, and
+            intelligent workflows.
+          </p>
+          <Link
+            href="/#about"
+            className="group not-prose mt-4 flex items-center justify-between border-t border-border pt-4 text-xs uppercase tracking-widest text-muted-foreground transition-colors hover:text-foreground"
+          >
+            [About]
+            <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
+          </Link>
         </div>
-      </Container>
-    </Section>
+      </EditorialSection>
+    </div>
   );
 };
 
