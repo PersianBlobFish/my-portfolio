@@ -43,7 +43,7 @@ const About = () => {
             className="!my-0 text-2xl font-medium leading-snug tracking-tight text-balance md:text-4xl"
             data-reveal
           >
-            I&apos;m a Computer Science student focused on solving real-world
+            I’m a Computer Science student focused on solving real-world
             problems through technology. I build practical, well-designed
             solutions with strong attention to detail.
           </h2>
