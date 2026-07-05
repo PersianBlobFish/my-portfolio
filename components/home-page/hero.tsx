@@ -7,17 +7,18 @@ import SignatureDraw from "@/components/home-page/signature-draw";
 const Hero = () => {
   return (
     <div id="home">
-      <div className="pt-[37vh] md:pt-[34vh]" data-reveal>
+      <div className="pt-[30vh] md:pt-[34vh]" data-reveal>
         <SignatureDraw className="mb-8 h-[26vh] md:mb-12 md:h-[32vh]" />
       </div>
       <EditorialSection
+        
         number="1"
         label={
           <>
           </>
         }
       >
-        <div className="flex flex-col gap-6" data-reveal>
+        <div className="flex flex-col gap-6">
           <h1 className="text-3xl font-medium tracking-tight text-balance md:text-5xl">
             <Typewriter
               words={["Simple solutions. Thoughtfully built.", "Simple tools. Thoughtfully engineered.", "Simple software. Thoughtfully designed.", "Simple systems. Thoughtfully engineered.", "Simple ideas. Thoughtfully shaped."]}

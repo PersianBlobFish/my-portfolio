@@ -64,7 +64,7 @@ const SignatureDraw = ({ className }: SignatureDrawProps) => {
     <div
       className={cn(
         "not-prose w-full max-w-5xl text-foreground",
-        className ?? "mb-6 h-[52vh] md:mb-8 md:h-[64vh]",
+        className ?? "mb-6 h-[59vh] md:mb-8 md:h-[64vh]",
       )}
     >
       <svg
