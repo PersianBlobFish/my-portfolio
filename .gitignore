@@ -48,3 +48,9 @@ next-env.d.ts
 
 # sdd scratch
 .superpowers/
+
+#doc prompts
+/docs
+
+#claude prompts
+.claude/
