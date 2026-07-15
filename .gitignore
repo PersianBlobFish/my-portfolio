@@ -49,8 +49,13 @@ next-env.d.ts
 # sdd scratch
 .superpowers/
 
+<<<<<<< Updated upstream
 #doc prompts
 /docs
 
 #claude prompts
 .claude/
+=======
+# Sentry Config File
+.env.sentry-build-plugin
+>>>>>>> Stashed changes
