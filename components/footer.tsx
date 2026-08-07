@@ -27,9 +27,6 @@ export default function Footer() {
                         </Link>
                     ))}
                 </div>
-                <p className="text-xs uppercase tracking-widest text-muted-foreground">
-                    Nguyen Pham Tran — © 2026
-                </p>
             </div>
         </footer>
     )

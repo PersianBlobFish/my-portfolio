@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Inter } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import { LayoutChrome } from "@/components/layout-chrome";
 import { cn } from "@/lib/utils";
@@ -7,7 +8,10 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { LenisProvider } from "@/components/lenis-provider";
 import { TooltipProvider } from "@/components/ui/tooltip";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
+const arialNarrow = localFont({
+  src: "./fonts/arial-narrow.ttf",
+  variable: "--font-sans",
+});
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,7 +34,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning className={cn("font-sans", inter.variable)}>
+    <html lang="en" suppressHydrationWarning className={cn("font-sans", arialNarrow.variable)}>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
