@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/theme-provider";
 import { LenisProvider } from "@/components/lenis-provider";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { VantaBackground } from "@/components/vanta-background";
 
 const arialNarrow = localFont({
   src: "./fonts/arial-narrow.ttf",
@@ -44,6 +45,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <VantaBackground />
           <TooltipProvider>
             <LenisProvider>
               <LayoutChrome>{children}</LayoutChrome>
