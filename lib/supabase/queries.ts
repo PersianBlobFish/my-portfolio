@@ -15,11 +15,10 @@ type ProjectContentOverride = {
 };
 
 // Fallback images live in /public so no storage tokens end up in the repo.
-// TODO: drop real screenshots into public/project/ and update these paths.
 const fallbackImageUrls = [
+  "/project-1.webp",
   "/placeholder.jpg",
-  "/placeholder.jpg",
-  "/placeholder.jpg",
+  "/project-3.webp",
 ];
 
 const fallbackProjectUrls = [
