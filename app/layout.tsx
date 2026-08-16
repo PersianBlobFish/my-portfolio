@@ -8,6 +8,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { LenisProvider } from "@/components/lenis-provider";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { VantaBackground } from "@/components/vanta-background";
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 const arialNarrow = localFont({
   src: "./fonts/arial-narrow.ttf",
@@ -52,6 +53,7 @@ export default function RootLayout({
             </LenisProvider>
           </TooltipProvider>
         </ThemeProvider>
+        <SpeedInsights />
       </body>
     </html>
   );
