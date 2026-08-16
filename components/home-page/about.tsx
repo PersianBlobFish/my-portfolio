@@ -29,7 +29,7 @@ const About = () => {
     <>
       <div id="about" data-nav-offset="24" />
       <EditorialSection
-        number="3"
+        number="2"
         label={
           <>
           </>

@@ -12,8 +12,8 @@ export default async function Page() {
       <Section>
         <Container>
           <Hero />
-          <Project projects={projects} />
           <About />
+          <Project projects={projects} />
         </Container>
       </Section>
     </Main>
